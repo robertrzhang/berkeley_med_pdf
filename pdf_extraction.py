@@ -16,11 +16,18 @@ def extract_text_from_pdf(pdf_path):
     return all_text
 
 if __name__ == "__main__":
-    pdf_path = "/Users/robertrzhang/Downloads/Med-School-Acceptance-Stats-2023.pdf"
-    extracted_text = extract_text_from_pdf(pdf_path)
     
-    # Save extracted text to a file
-    with open("output.txt", "w") as output_file:
-        output_file.write(extracted_text)
+    pdf_path = input("Enter your path to your file from root: ")
+    try:
+        extracted_text = extract_text_from_pdf(pdf_path)
+    
+        name = pdf_path.split("/")[-1]
+        name = name.split(".")[0]
+        # Save extracted text to a file
+        with open(f"{name}.txt", "w") as output_file:
+            output_file.write(extracted_text)
 
-    print("Text extraction complete. Check 'output.txt' for results.")
+        print(f"Text extraction complete. Check '{name}.txt' for results.")
+    except fitz.FileNotFoundError:
+        print("Your file name does not exist!")
+
