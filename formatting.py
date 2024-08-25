@@ -29,6 +29,8 @@ def formatFile(txt_path):
     #        print(r)
             if r.isdigit():
                 if s:
+                    s = s.split()
+                    s = " ".join(s)
                     arr[0].append(f'{s.strip()}')
                     s = ""
                     count += 1
