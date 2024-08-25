@@ -24,10 +24,10 @@ if __name__ == "__main__":
         name = pdf_path.split("/")[-1]
         name = name.split(".")[0]
         # Save extracted text to a file
-        with open(f"{name}.txt", "w") as output_file:
+        with open(f"data/{name}.txt", "w") as output_file:
             output_file.write(extracted_text)
 
-        print(f"Text extraction complete. Check '{name}.txt' for results.")
+        print(f"Text extraction complete. Check 'data/{name}.txt' for results.")
     except fitz.FileNotFoundError:
         print("Your file name does not exist!")
 

@@ -23,21 +23,20 @@ def formatFile(txt_path):
         count = 0
 
         for r in reader:
-
             if not r:
                 continue
             r = r[0].strip()
     #        print(r)
             if r.isdigit():
                 if s:
-                    arr[0].append(s)
+                    arr[0].append(f'{s.strip()}')
                     s = ""
                     count += 1
                 arr[count].append(r)
                 count += 1
             else:
                 count = 0
-                s += r
+                s = s + " " + r
         
         # for i in arr:
         #     print(len(i))
@@ -48,8 +47,8 @@ def formatFile(txt_path):
             # print(col_names[i])
             dic.update({col_names[i]:arr[i]})
         df = pd.DataFrame(dic)
-        df.to_csv(f"{name}.csv", sep='\t', index=False, header=True)
-        print(f"Text extraction complete. Check '{name}.csv' for results.")
+        df.to_csv(f"data/{name}.csv", index=False, header=True)
+        print(f"Text extraction complete. Check 'data/{name}.csv' for results.")
 
 if __name__ == "__main__":
     
